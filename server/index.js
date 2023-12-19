@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import userRouter from "./routes/userRoutes.js";
+import authRouter from "./routes/authentication.js";
 dotenv.config();
 
 mongoose
@@ -24,6 +25,7 @@ app.use(morgan("dev"));
 
 //Api route
 app.use("/api/user", userRouter);
+app.use("/api/auth", authRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
