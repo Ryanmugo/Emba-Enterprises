@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
+import morgan from "morgan";
 import dotenv from "dotenv";
+import userRouter from "./routes/userRoutes.js";
 dotenv.config();
 
 mongoose
@@ -15,6 +17,13 @@ mongoose
 const PORT = process.env.PORT || 5000;
 
 const app = express();
+
+//middlewares
+app.use(express.json());
+app.use(morgan("dev"));
+
+//Api route
+app.use("/api/user", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
