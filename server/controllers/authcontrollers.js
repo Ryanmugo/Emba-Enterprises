@@ -1,4 +1,3 @@
-import { errorHandler } from "../utils/error.js";
 import User from "./../models/userModel.js";
 import { hash } from "bcrypt";
 
