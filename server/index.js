@@ -31,7 +31,7 @@ app.use("/api/auth", authRouter);
 
 //middleware for errors
 app.use((err, req, res, next) => {
-  const statusCode = ree.statusCode || 500;
+  const statusCode = res.statusCode || 500;
   const message = err.message || "Internal Server Error";
   return res.status(statusCode).json({
     success: false,
