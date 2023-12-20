@@ -4,6 +4,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import userRouter from "./routes/userRoutes.js";
 import authRouter from "./routes/authentication.js";
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 mongoose
@@ -22,6 +23,7 @@ const app = express();
 //middlewares
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(cookieParser());
 
 //Api route
 app.use("/api/user", userRouter);
