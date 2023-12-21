@@ -4,6 +4,7 @@ import morgan from "morgan";
 import dotenv from "dotenv";
 import userRouter from "./routes/userRoutes.js";
 import authRouter from "./routes/authentication.js";
+import listingRouter from "./routes/listingRoutes.js";
 import cookieParser from "cookie-parser";
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use(cookieParser());
 //Api route
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/listing", listingRouter);
 
 //middleware for errors
 app.use((err, req, res, next) => {
