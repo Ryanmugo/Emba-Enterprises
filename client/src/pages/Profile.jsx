@@ -35,7 +35,7 @@ const Profile = () => {
     if (file) {
       handleFileUpload(file);
     }
-  });
+  }, [file]);
 
   //This is for updating your profile picture from the default pic the app has given you!!
   const handleFileUpload = (file) => {
@@ -278,7 +278,9 @@ const Profile = () => {
                 >
                   Delete
                 </button>
-                <button className="text-green-600 uppercase">Edit</button>
+                <Link to={`/update-listing/${listing._id}`}>
+                  <button className="text-green-600 uppercase">Edit</button>
+                </Link>
               </div>
             </div>
           ))}
