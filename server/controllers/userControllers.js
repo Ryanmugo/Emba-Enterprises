@@ -53,7 +53,6 @@ export const deleteUser = async (req, res, next) => {
   }
 };
 
-//Getting the listings of the houses for rent or sale the user has posted in his/her profile!!
 export const getUserListings = async (req, res, next) => {
   if (req.user.id === req.params.id) {
     try {
