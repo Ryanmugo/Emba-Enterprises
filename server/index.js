@@ -6,6 +6,7 @@ import userRouter from "./routes/userRoutes.js";
 import authRouter from "./routes/authentication.js";
 import listingRouter from "./routes/listingRoutes.js";
 import cookieParser from "cookie-parser";
+import path from "path";
 dotenv.config();
 
 mongoose
@@ -16,6 +17,8 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 5000;
 
@@ -30,6 +33,12 @@ app.use(cookieParser());
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
+
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 
 //middleware for errors
 app.use((err, req, res, next) => {
